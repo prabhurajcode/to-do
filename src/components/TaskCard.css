@@ -1,47 +1,47 @@
 .task_card {
-    width: 100%;
-    min-height: 100px;
-    border: 1px solid #dcdcdc;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
 }
 
 .task_text {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .task_text span {
-    font-weight: 700;
-    color: #6457f9; 
-    margin-right: 10px; 
+  font-weight: 700;
+  color: #6457f9;
+  margin-right: 10px;
 }
 
 .task_card_bottom_line {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task_card_buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .edit_button,
 .delete_button {
-    font-size: 14px;
-    font-weight: 500;
-    background-color: #6457f9;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #6457f9;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .delete_button {
-    background-color: #cd6567; 
+  background-color: #cd6567;
 }

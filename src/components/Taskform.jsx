@@ -42,9 +42,7 @@ const Taskform = ({ setTasks, editingTask, setEditingTask }) => {
     if (editingTask) {
       // Update existing task
       setTasks((prev) =>
-        prev.map((task, index) =>
-          index === task.index ? taskData : task
-        )
+        prev.map((task, index) => (index === task.index ? taskData : task))
       );
       setEditingTask(null); // Reset editing state
     } else {
@@ -58,11 +56,10 @@ const Taskform = ({ setTasks, editingTask, setEditingTask }) => {
       tags: [],
     });
   };
-  
 
   return (
     <header className="app_header">
-        <h1 className="todo_heading">My Todo</h1>
+      <h1 className="todo_heading">My Todo</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="task_inputs_container">
@@ -98,7 +95,11 @@ const Taskform = ({ setTasks, editingTask, setEditingTask }) => {
               selectTag={selectTag}
               selected={checkTag("Medium")}
             />
-            <Tag tagName="Low" selectTag={selectTag} selected={checkTag("Low")} />
+            <Tag
+              tagName="Low"
+              selectTag={selectTag}
+              selected={checkTag("Low")}
+            />
           </div>
 
           <div>
@@ -126,6 +127,8 @@ const Taskform = ({ setTasks, editingTask, setEditingTask }) => {
 
 Taskform.propTypes = {
   setTasks: PropTypes.func.isRequired,
+  editingTask: PropTypes.func.isRequired,
+  setEditingTask: PropTypes.func.isRequired,
 };
 
 export default Taskform;
