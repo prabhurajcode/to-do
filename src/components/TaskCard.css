@@ -44,3 +44,25 @@
 .task_delete:hover .delete_icon {
     opacity: 80%;
 }
+
+.task_card_buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit_button,
+  .delete_button {
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #6457f9;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete_button {
+    background-color: #cd6567; 
+  }
+  

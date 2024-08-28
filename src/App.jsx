@@ -27,9 +27,9 @@ useEffect(()=>{
     <div className="app">
       <Taskform setTasks={setTasks}/>
       <main className="app_main">
-        <TagColumn title='To do' icon={todoIcon} tasks={tasks} status="todo" handleDelete={handleDelete}/>
+        <TagColumn title='Todo / Not Completed' icon={todoIcon} tasks={tasks} status="todo" handleDelete={handleDelete}/>
         <TagColumn title='Doing' icon={doingIcon} tasks={tasks} status="doing" handleDelete={handleDelete}/>
-        <TagColumn title='Done' icon={doneIcon} tasks={tasks} status="done" handleDelete={handleDelete}/>
+        <TagColumn title='Completed' icon={doneIcon} tasks={tasks} status="done" handleDelete={handleDelete}/>
       </main>
     </div>
   );

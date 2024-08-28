@@ -4,10 +4,9 @@ import "./Tag.css";
 
 const Tag = ({ tagName, selectTag, selected }) => {
   const tagStyle = {
-    HTML: { backgroundColor: "#fda821" },
-    CSS: { backgroundColor: "#15d4c8" },
-    Javascript: { backgroundColor: "#ffd12c" },
-    React: { backgroundColor: "#4cdafc" },
+    High: { backgroundColor: "#eb8783" },
+    Medium: { backgroundColor: "#fda821" },
+    Low: { backgroundColor: "#ffd12c" },
     default: { backgroundColor: "#f9f9f9" },
   };
 

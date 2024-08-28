@@ -6,80 +6,79 @@ import PropTypes from "prop-types";
 const Taskform = ({ setTasks }) => {
   const [taskData, setTaskData] = useState({
     task: "",
+    description: "",
     status: "todo",
     tags: [],
   });
 
-  const checkTag = (tag) => {
-    return taskData.tags.some((item) => item === tag);
-  };
+  const checkTag = (tag) => taskData.tags.includes(tag);
 
   const selectTag = (tag) => {
-    if (taskData.tags.some((item) => item === tag)) {
-      const filterTags = taskData.tags.filter((item) => item !== tag);
-      setTaskData((prev) => {
-        return { ...prev, tags: filterTags };
-      });
+    if (checkTag(tag)) {
+      setTaskData((prev) => ({
+        ...prev,
+        tags: prev.tags.filter((item) => item !== tag),
+      }));
     } else {
-      setTaskData((prev) => {
-        return { ...prev, tags: [...prev.tags, tag] };
-      });
+      setTaskData((prev) => ({ ...prev, tags: [...prev.tags, tag] }));
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setTaskData((previous_value) => {
-      return { ...previous_value, [name]: value };
-    });
+    setTaskData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks((prev) => {
-      return [...prev, taskData];
-    });
+    setTasks((prev) => [...prev, taskData]);
     setTaskData({
       task: "",
+      description: "",
       status: "todo",
       tags: [],
     });
   };
+
   return (
     <header className="app_header">
+        <h1 className="todo_heading">My Todo</h1>
+
       <form onSubmit={handleSubmit}>
-        <input
-          className="task_input"
-          value={taskData.name}
-          type="text"
-          name="name"
-          placeholder="Enter task"
-          required
-          onChange={handleChange}
-        />
+        <div className="task_inputs_container">
+          <input
+            className="task_input"
+            type="text"
+            name="task"
+            placeholder="Todo name"
+            value={taskData.task}
+            required
+            onChange={handleChange}
+          />
+          <input
+            className="task_input"
+            type="text"
+            name="description"
+            placeholder="Todo description"
+            value={taskData.description}
+            required
+            onChange={handleChange}
+          />
+        </div>
 
         <div className="task_form_bottom_line">
           <div>
             <Tag
-              tagName="HTML"
+              tagName="High"
               selectTag={selectTag}
-              selected={checkTag("HTML")}
+              selected={checkTag("High")}
             />
             <Tag
-              tagName="CSS"
+              tagName="Medium"
               selectTag={selectTag}
-              selected={checkTag("CSS")}
+              selected={checkTag("Medium")}
             />
-            <Tag
-              tagName="Javascript"
-              selectTag={selectTag}
-              selected={checkTag("Javascript")}
-            />
-            <Tag
-              tagName="React"
-              selectTag={selectTag}
-              selected={checkTag("React")}
-            />
+            <Tag tagName="Low" selectTag={selectTag} selected={checkTag("Low")} />
           </div>
 
           <div>
@@ -87,16 +86,17 @@ const Taskform = ({ setTasks }) => {
               className="task_status"
               name="status"
               value={taskData.status}
+              required
               onChange={handleChange}
             >
-              <option value="to_do">To do</option>
+              <option value="todo">Todo / Not completed</option>
               <option value="doing">Doing</option>
-              <option value="done">Done</option>
+              <option value="done">Completed</option>
             </select>
           </div>
 
           <button className="task_submit" type="submit">
-            + Add Task
+            + Add Todo
           </button>
         </div>
       </form>
@@ -105,7 +105,7 @@ const Taskform = ({ setTasks }) => {
 };
 
 Taskform.propTypes = {
-  setTasks: PropTypes.array,
+  setTasks: PropTypes.func.isRequired,
 };
 
 export default Taskform;
