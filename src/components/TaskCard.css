@@ -7,10 +7,16 @@
     margin: 15px 0;
 }
 
-.task_text{
+.task_text {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 15px;
+}
+
+.task_text span {
+    font-weight: 700;
+    color: #6457f9; 
+    margin-right: 10px; 
 }
 
 .task_card_bottom_line {
@@ -19,39 +25,13 @@
     justify-content: space-between;
 }
 
-.task_delete{
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; 
-}
-
-
-.task_delete:hover{
-    background-color: #ebebeb;
-}
-
-.delete_icon{
-    width: 20px;
-    opacity: 50%;
-    transition: all 0.3s ease-in-out;
-}
-
-.task_delete:hover .delete_icon {
-    opacity: 80%;
-}
-
 .task_card_buttons {
     display: flex;
     gap: 10px;
-  }
-  
-  .edit_button,
-  .delete_button {
+}
+
+.edit_button,
+.delete_button {
     font-size: 14px;
     font-weight: 500;
     background-color: #6457f9;
@@ -60,9 +40,8 @@
     padding: 5px 10px;
     border: none;
     cursor: pointer;
-  }
-  
-  .delete_button {
+}
+
+.delete_button {
     background-color: #cd6567; 
-  }
-  
+}

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./TaskForm.css";
 import Tag from "./Tag";
 import PropTypes from "prop-types";
 
-const Taskform = ({ setTasks }) => {
+const Taskform = ({ setTasks, editingTask, setEditingTask }) => {
   const [taskData, setTaskData] = useState({
     task: "",
     description: "",
@@ -11,7 +11,15 @@ const Taskform = ({ setTasks }) => {
     tags: [],
   });
 
-  const checkTag = (tag) => taskData.tags.includes(tag);
+  useEffect(() => {
+    if (editingTask) {
+      setTaskData(editingTask);
+    }
+  }, [editingTask]);
+
+  const checkTag = (tag) => {
+    return taskData.tags.some((item) => item === tag);
+  };
 
   const selectTag = (tag) => {
     if (checkTag(tag)) {
@@ -31,7 +39,18 @@ const Taskform = ({ setTasks }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks((prev) => [...prev, taskData]);
+    if (editingTask) {
+      // Update existing task
+      setTasks((prev) =>
+        prev.map((task, index) =>
+          index === task.index ? taskData : task
+        )
+      );
+      setEditingTask(null); // Reset editing state
+    } else {
+      // Add new task
+      setTasks((prev) => [...prev, taskData]);
+    }
     setTaskData({
       task: "",
       description: "",
@@ -39,6 +58,7 @@ const Taskform = ({ setTasks }) => {
       tags: [],
     });
   };
+  
 
   return (
     <header className="app_header">

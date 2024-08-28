@@ -1,20 +1,29 @@
 import Tag from "./Tag";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./TaskCard.css";
 
-const TaskCard = ({ title, description, tags,handleEdit, handleDelete, index}) => {
-  
+const TaskCard = ({
+  title,
+  description,
+  tags,
+  handleEdit,
+  handleDelete,
+  index,
+}) => {
   return (
     <article className="task_card">
-      <p className="task_text">Name: {title}</p>
-      <p className="task_text">Description : {description}</p>
-
+      <p className="task_text">
+        <span>Name:</span> {title}
+      </p>
+      <p className="task_text">
+        <span>Description:</span> {description}
+      </p>
 
       <div className="task_card_bottom_line">
         <div className="task_card_tags">
-        {tags.map((tag,index) => (
-            <Tag key={index} tagName={tag} selected/>
+          {tags.map((tag, index) => (
+            <Tag key={index} tagName={tag} selected />
           ))}
         </div>
         <div className="task_card_buttons">
@@ -37,6 +46,5 @@ TaskCard.propTypes = {
   handleEdit: PropTypes.func,
   handleDelete: PropTypes.func,
   index: PropTypes.int,
-
 };
 export default TaskCard;

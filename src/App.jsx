@@ -12,12 +12,19 @@ const oldTasks = localStorage.getItem("tasks");
 
 const App = () => {
   const [tasks,setTasks] = useState(JSON.parse(oldTasks) || []);
+  const [editingTask, setEditingTask] = useState(null);
+
 
 useEffect(()=>{
   localStorage.setItem("tasks",JSON.stringify(tasks));
 },[tasks])
 
- 
+
+const handleEdit = (taskIndex) => {
+  const taskToEdit = tasks[taskIndex];
+  setEditingTask({ ...taskToEdit, index: taskIndex });
+};
+
   const handleDelete = (taskIndex) => {
     const newTasks = tasks.filter((task,index)=> 
     index !== taskIndex)
@@ -25,11 +32,11 @@ useEffect(()=>{
   }
   return (
     <div className="app">
-      <Taskform setTasks={setTasks}/>
+      <Taskform setTasks={setTasks} editingTask={editingTask}  setEditingTask={setEditingTask}/>
       <main className="app_main">
-        <TagColumn title='Todo / Not Completed' icon={todoIcon} tasks={tasks} status="todo" handleDelete={handleDelete}/>
-        <TagColumn title='Doing' icon={doingIcon} tasks={tasks} status="doing" handleDelete={handleDelete}/>
-        <TagColumn title='Completed' icon={doneIcon} tasks={tasks} status="done" handleDelete={handleDelete}/>
+        <TagColumn title='Todo / Not Completed' icon={todoIcon} tasks={tasks} status="todo" handleEdit={handleEdit}  handleDelete={handleDelete}/>
+        <TagColumn title='Doing' icon={doingIcon} tasks={tasks} status="doing" handleEdit={handleEdit} handleDelete={handleDelete}/>
+        <TagColumn title='Completed' icon={doneIcon} tasks={tasks} status="done" handleEdit={handleEdit} handleDelete={handleDelete}/>
       </main>
     </div>
   );
